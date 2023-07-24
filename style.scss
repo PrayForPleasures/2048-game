@@ -31,7 +31,7 @@ body {
 	border-radius: 1vmin;
 }
 
-.square {
+.tile {
 	--y: 2;
 	--x: 2;
 	position: absolute;
@@ -45,8 +45,8 @@ body {
 	border-radius: 1vmin;
 	font-size: 8vmin;
 	font-weight: bold;
-	background-color: whitesmoke;
-	color: $main-color;
+	background-color: hsl(25, 60%, var(--bg-lightness));
+	color: hsl(25, 40%, var(--text-lightness));
 	transition: 0.5s;
 	animation: show 1s;
 }

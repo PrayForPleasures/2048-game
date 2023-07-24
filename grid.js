@@ -1,4 +1,4 @@
-import { Cell } from "./cell";
+import { Cell } from "./cell.js";
 
 const GRID_SIZE = 4;
 const CELLS_COUNT = GRID_SIZE * GRID_SIZE;
@@ -8,14 +8,20 @@ export class Grid {
 		this.cells = [];
 		for (let i = 0; i < CELLS_COUNT; i++) {
 			this.cells.push(
-				new this.cells(gridElement, i % GRID_SIZE, Math.floor(i / GRID_SIZE))
+				new Cell(gridElement, i % GRID_SIZE, Math.floor(i / GRID_SIZE))
 			);
 		}
+
+		this.cellsGroupedByColumn = this.groupeCellsByColumn();
 	}
 
 	getRandomEmptyCell() {
-		const emptyCell = this.cells.filter((cell) => cell.isEmpty());
+		const emptyCells = this.cells.filter((cell) => cell.isEmpty());
 		const randomIndex = Math.floor(Math.random() * emptyCells.length);
 		return emptyCells[randomIndex];
+	}
+
+	groupeCellsByColumn() {
+		return this.cells.reduce(() => {}, []);
 	}
 }
