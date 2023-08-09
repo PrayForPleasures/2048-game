@@ -26,10 +26,12 @@ function handleInput(e) {
 			break;
 
 		case "ArrowRight":
+			moveRight();
 			console.log("right");
 			break;
 
 		case "ArrowLeft":
+			moveLeft();
 			console.log("left");
 			break;
 
@@ -47,6 +49,10 @@ function moveUp() {
 function moveDown() {
 	slideTiles(grid.cellsGroupedByReverseColumn);
 }
+
+function moveLeft() {}
+
+function moveRight() {}
 
 function slideTiles(groupedCells) {
 	groupedCells.forEach((group) => slideTilesInGroup(group));
