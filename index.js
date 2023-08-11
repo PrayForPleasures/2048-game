@@ -39,6 +39,10 @@ function handleInput(e) {
 			setupInputOnce();
 			return;
 	}
+
+	const newTile = new Tile(gameBoard);
+	grid.getRandomEmptyCell().linkTile(newTile);
+
 	setupInputOnce();
 }
 
@@ -50,9 +54,13 @@ function moveDown() {
 	slideTiles(grid.cellsGroupedByReverseColumn);
 }
 
-function moveLeft() {}
+function moveLeft() {
+	slideTiles(grid.cellsGroupedByRow);
+}
 
-function moveRight() {}
+function moveRight() {
+	slideTiles(grid.cellsGroupedByReverseRow);
+}
 
 function slideTiles(groupedCells) {
 	groupedCells.forEach((group) => slideTilesInGroup(group));
