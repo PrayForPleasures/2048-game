@@ -39,9 +39,9 @@ body {
   border-radius: 1vmin;
   font-size: 8vmin;
   font-weight: bold;
-  background-color: hsl(25, 60%, var(--bg-lightness));
+  background-color: hsl(80, 75%, var(--bg-lightness));
   color: hsl(25, 40%, var(--text-lightness));
-  transition: 0.5s;
+  transition: 0.3s;
   animation: show 1s; }
 
 @keyframes show {

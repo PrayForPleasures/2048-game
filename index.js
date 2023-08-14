@@ -63,14 +63,15 @@ function moveRight() {
 }
 
 function slideTiles(groupedCells) {
-	groupedCells.forEach((group) => slideTilesInGroup(group));
+	const promises = [];
+	groupedCells.forEach((group) => slideTilesInGroup(group, promises));
 
 	grid.cells.forEach((cell) => {
 		cell.hasTileForMerge() && cell.mergeTiles();
 	});
 }
 
-function slideTilesInGroup(group) {
+function slideTilesInGroup(group, promises) {
 	for (let i = 1; i < group.length; i++) {
 		if (group[i].isEmpty()) {
 			continue;
@@ -88,6 +89,8 @@ function slideTilesInGroup(group) {
 		if (!targetCell) {
 			continue;
 		}
+
+		promises.push(cellWithTile.linkedTile.waitTransition());
 
 		if (targetCell.isEmpty()) {
 			targetCell.linkTile(cellWithTile.linkedTile);

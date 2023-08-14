@@ -2,7 +2,7 @@ export class Tile {
 	constructor(gridElement) {
 		this.tileElement = document.createElement("div");
 		this.tileElement.classList.add("tile");
-		this.setValue(Math.random() > 0.5 ? 2 : 4);
+		this.setValue(Math.random() > 0.25 ? 2 : 4);
 		gridElement.append(this.tileElement);
 	}
 
@@ -26,5 +26,13 @@ export class Tile {
 
 	removeFromDOM() {
 		this.tileElement.remove();
+	}
+
+	waitTransition() {
+		return new Promise((resolve) => {
+			this.tileElement.addEventListener("transitionend", resolve, {
+				once: true,
+			});
+		});
 	}
 }
